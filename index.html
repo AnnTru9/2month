@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2MONTHS - Ремонт квартир под ключ в Минске</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/img_01_777f51e4f404.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/img_02_3c52b3d0e870.webp" fetchpriority="high">
+
+  <style>
+    :root{
+      --bg:#F3EFE8;
+      --paper:#FAF8F4;
+      --ink:#1F1F1F;
+      --muted:#6E6B66;
+      --olive:#6F765D;
+      --wood:#B28D69;
+      --line:#D5CFC5;
+      --radius:28px;
+      --shadow:0 20px 50px rgba(31,31,31,.08);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;background:var(--bg);color:var(--ink);
+      font-family:"Manrope",sans-serif;line-height:1.45;overflow-x:hidden
+    }
+    img{display:block;width:100%;height:100%;object-fit:cover}
+    a{text-decoration:none;color:inherit}
+    button,input,select{font:inherit}
+    .container{width:min(1180px, calc(100% - 40px));margin:0 auto}
+    .topbar{
+      position:fixed;inset:0 0 auto 0;z-index:100;
+      background:rgba(243,239,232,.82);backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(213,207,197,.8)
+    }
+    .nav{
+      height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px
+    }
+    .brand{font-family:"Unbounded",sans-serif;font-size:20px;font-weight:700;letter-spacing:-.03em}
+    .nav-links{display:flex;align-items:center;gap:30px;font-size:14px;font-weight:700}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:15px 24px;border-radius:999px;border:0;background:var(--ink);color:#fff;
+      font-weight:800;cursor:pointer;transition:.22s ease
+    }
+    .btn:hover{transform:translateY(-2px);background:var(--olive)}
+    .btn.light{background:#fff;color:var(--ink)}
+    .btn.light:hover{background:#fff;transform:translateY(-2px)}
+    .btn.block{width:100%}
+    .section{padding:90px 0}
+    .eyebrow{
+      font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;
+      color:var(--olive);margin-bottom:18px
+    }
+    h1,h2,h3{font-family:"Unbounded",sans-serif;letter-spacing:-.045em;margin:0;line-height:1.02}
+    h1{font-size:50px;max-width:760px}
+    h2{font-size:50px;max-width:980px}
+    h3{font-size:clamp(22px,2vw,30px)}
+    .week h3{font-size:27px;margin-bottom:12px;line-height:1.05}
+    .week p{font-size:16px;line-height:1.45}
+    p{margin:0}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease}
+    .reveal.visible{opacity:1;transform:none}
+    .hero{
+      padding-top:118px;min-height:100vh;display:flex;align-items:center
+    }
+    .hero-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:32px;align-items:center}
+    .hero-kicker{display:flex;align-items:center;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+    .hero-kicker strong{font-family:"Unbounded",sans-serif;font-size:18px;letter-spacing:-.03em}
+    .hero-kicker span{color:var(--muted);font-weight:700}
+    .hero-sub{margin-top:22px;max-width:560px;font-size:clamp(16px,1.6vw,21px);color:var(--muted)}
+    .hero-actions{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap}
+
+    .ba-wrap{
+      background:var(--paper);border:1px solid var(--line);border-radius:34px;overflow:hidden;box-shadow:var(--shadow)
+    }
+    .ba{
+      --pos:50%;position:relative;aspect-ratio:14/12;background:#ddd;overflow:hidden
+    }
+    .ba-before,.ba-after,.ba img{position:absolute;inset:0;width:100%;height:100%}
+    .ba-after{clip-path: inset(0 calc(100% - var(--pos)) 0 0)}
+    .ba-divider{
+      position:absolute;top:0;bottom:0;left:var(--pos);width:2px;transform:translateX(-1px);
+      background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.08);pointer-events:none
+    }
+    .ba-handle{
+      position:absolute;left:var(--pos);top:50%;width:58px;height:58px;transform:translate(-50%,-50%);
+      border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 10px 22px rgba(0,0,0,.18);
+      font-size:20px;font-weight:900;pointer-events:none
+    }
+    .ba-label{
+      position:absolute;top:16px;z-index:2;padding:10px 14px;border-radius:999px;
+      background:rgba(255,255,255,.92);font-size:12px;font-weight:800
+    }
+    .ba-label.left{left:16px}
+    .ba-label.right{right:16px}
+    .ba-range{
+      position:absolute;inset:0;width:100%;height:100%;appearance:none;background:transparent;
+      cursor:ew-resize;margin:0;z-index:5
+    }
+    .ba-range::-webkit-slider-thumb{appearance:none;width:58px;height:58px;border-radius:50%;background:transparent;border:0}
+    .ba-range::-moz-range-thumb{width:58px;height:58px;border-radius:50%;background:transparent;border:0}
+    .ba-note{display:flex;justify-content:space-between;gap:12px;padding:16px 20px;font-size:13px;color:var(--muted);font-weight:700}
+
+    .split-box{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:34px}
+    .tile{border-radius:26px;padding:26px;border:1px solid var(--line);min-height:270px;background:var(--paper)}
+    .tile.dark{background:var(--olive);color:#fff;border-color:transparent}
+    .tile p{margin-top:16px;color:var(--muted);font-size:17px}
+    .tile.dark p{color:rgba(255,255,255,.84)}
+    .scenario-list{
+      margin-top:16px;
+      display:grid;
+      gap:10px;
+      line-height:1;
+      font-size:17px;
+      color:var(--muted);
+    }
+    .tile.dark .scenario-list{color:rgba(255,255,255,.88)}
+    .two-line{max-width:1180px}
+
+    .cases-heading{font-size:47px}
+    .estimate-heading{font-size:45px}
+    .services-heading{font-size:45px}
+    .prices-heading{font-size:45px}
+
+
+    .timeline-grid{margin-top:34px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .week{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px 26px;min-height:200px;transition:.25s ease}
+    .week:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+    .week .small{font-size:13px;font-weight:800;text-transform:uppercase;color:var(--olive);margin-bottom:24px;letter-spacing:.08em}
+
+    .cases-grid{margin-top:34px;display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .case-card{background:var(--paper);border:1px solid var(--line);border-radius:28px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.04)}
+    .case-copy{padding:18px 20px 22px}
+    .case-title{font-family:"Unbounded",sans-serif;font-size:24px;line-height:1.08;margin-bottom:10px}
+    .case-meta{display:flex;gap:12px 18px;flex-wrap:wrap;color:var(--muted);font-size:14px;font-weight:700}
+
+    .estimate{display:grid;grid-template-columns:.88fr 1.12fr;gap:28px;margin-top:34px;align-items:start}
+    .estimate-copy,.estimate-table{background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:28px}
+    .estimate-table{padding:24px}
+    .row{display:grid;grid-template-columns:1fr auto;gap:18px;padding:16px 0;border-bottom:1px solid var(--line)}
+    .row:last-child{border-bottom:0;font-size:20px;font-weight:800}
+
+    .calc-box{margin-top:34px;background:var(--ink);color:#fff;border-radius:30px;padding:32px}
+    .calc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:24px}
+    .field{display:grid;gap:8px}
+    .field label{font-size:13px;color:#C8C6C1;font-weight:700}
+    .field input,.field select{width:100%;padding:15px 16px;border-radius:14px;border:1px solid #4A4A4A;background:#2C2C2C;color:#fff;outline:none}
+    .calc-result{margin-top:22px;padding-top:22px;border-top:1px solid #474747;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:end}
+    .calc-price{font-family:"Unbounded",sans-serif;font-size:clamp(28px,3.6vw,44px);line-height:1.04}
+
+    .services-grid,.prices-grid,.team-grid,.reviews-grid{margin-top:34px;display:grid;gap:18px}
+    .services-grid{grid-template-columns:repeat(3,1fr)}
+    .service-card{padding:0;overflow:hidden;transition:transform .28s ease,box-shadow .28s ease}
+    .service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+    .service-photo{height:260px;overflow:hidden;background:#e9e4dc}
+    .service-photo img{width:100%;height:100%;object-fit:cover;transition:transform .55s ease}
+    .service-card:hover .service-photo img{transform:scale(1.035)}
+    .service-content{padding:22px 24px 26px}
+    .service-content p{margin-top:12px;color:var(--muted)}
+    .prices-grid{grid-template-columns:repeat(3,1fr)}
+    .team-grid{grid-template-columns:repeat(4,1fr)}
+    .reviews-grid{grid-template-columns:repeat(3,1fr)}
+    .card{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:24px}
+    .price-card.featured{background:var(--olive);color:#fff;border-color:transparent}
+    .price-tag{margin:20px 0 14px;font-family:"Unbounded",sans-serif;font-size:30px;line-height:1.08}
+
+    .plan-grid{margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .plan-intro{max-width:900px;margin-top:16px;color:var(--muted);font-size:17px;line-height:1.5}
+    .plan-image img{object-fit:contain;background:#F7F3EC;padding:18px}
+    .plan-media{
+      border-radius:28px;overflow:hidden;background:var(--paper);border:1px solid var(--line);min-height:420px;display:flex;flex-direction:column
+    }
+    .plan-image{aspect-ratio:4/3;flex:1;min-height:320px}
+    .plan-tabs{display:flex;gap:10px;padding:18px;flex-wrap:wrap;border-top:1px solid var(--line);background:#fff}
+    .chip{padding:11px 16px;border-radius:999px;border:1px solid var(--line);background:var(--paper);font-weight:800;cursor:pointer;transition:.2s ease}
+    .chip.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .plan-copy{display:flex;flex-direction:column;justify-content:center}
+
+    .person{overflow:hidden;padding:0}
+    .person img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;display:block}
+    .person-copy{padding:16px 18px 20px;min-height:82px;background:var(--paper)}
+    .person-copy strong{display:block;font-size:17px;line-height:1.2}.person-copy small{display:block;margin-top:7px;color:var(--muted);font-size:14px;line-height:1.3}
+
+    .faq-list{margin-top:34px;display:grid;gap:12px}
+    details{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px 20px}
+    summary{cursor:pointer;font-weight:800;list-style:none}
+    details p{margin-top:12px;color:var(--muted)}
+
+    .final-cta{
+      margin-top:30px;background:var(--wood);color:#fff;border-radius:34px;padding:36px;
+      display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center
+    }
+    .final-cta h2{font-size:45px;max-width:720px}
+    .lead-form{display:grid;gap:12px}
+    .lead-form input{width:100%;padding:15px 16px;border-radius:14px;border:0;background:rgba(255,255,255,.96);color:var(--ink)}
+    .message{display:none;padding:12px 14px;background:#fff;color:var(--ink);border-radius:12px;font-weight:800}
+
+    footer{margin-top:90px;background:#1F1F1F;color:#fff;padding:46px 0 28px}
+    .footer-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:30px}
+    .footer-col{display:grid;gap:10px;align-content:start}
+    .muted{color:#B5B5B5}
+    .copyright{margin-top:30px;padding-top:18px;border-top:1px solid rgba(255,255,255,.16);color:#9A9A9A;font-size:13px}
+
+    @media (max-width: 1080px){
+      .hero-grid,.estimate,.plan-grid,.final-cta{grid-template-columns:1fr}
+      .timeline-grid{grid-template-columns:repeat(2,1fr)}
+      .services-grid,.prices-grid,.reviews-grid{grid-template-columns:1fr 1fr}
+      .team-grid{grid-template-columns:1fr 1fr}
+      .footer-grid{grid-template-columns:1fr 1fr}
+      .hero{min-height:auto}
+    }
+    @media (max-width: 760px){
+      .container{width:min(100% - 24px, 1180px)}
+      .nav{height:66px}
+      .nav-links a:not(.btn){display:none}
+      .nav-links{gap:12px}
+      .nav .btn{padding:12px 16px;font-size:13px}
+      .section{padding:70px 0}
+      .hero{padding-top:92px}
+      .hero-grid,.split-box,.timeline-grid,.cases-grid,.services-grid,.prices-grid,.plan-grid,.team-grid,.reviews-grid,.calc-grid,.footer-grid{grid-template-columns:1fr}
+      .hero-grid{gap:24px}
+      .ba{aspect-ratio:4/4.5}
+      .ba-handle{width:48px;height:48px}
+      .case-title{font-size:22px}
+      .card,.week,.tile,.estimate-copy,.estimate-table,.calc-box,.plan-media,.final-cta{padding:20px}
+      .plan-image{min-height:260px}
+      .hero-kicker strong{font-size:17px}
+
+      h1,h2,.final-cta h2,.cases-heading,.estimate-heading,.services-heading,.prices-heading{font-size:34px}
+      .footer-grid{gap:24px}
+    }
+  
+    /* ===== HERO V16: fullscreen before/after ===== */
+    .topbar{
+      position:absolute;inset:0 0 auto 0;z-index:100;
+      background:linear-gradient(180deg,rgba(247,244,239,.96) 0%,rgba(247,244,239,.78) 70%,rgba(247,244,239,0) 100%);
+      backdrop-filter:none;border-bottom:0;
+    }
+    .nav{
+      width:min(1480px,calc(100% - 64px));
+      height:92px;margin:0 auto;
+      display:flex;align-items:center;justify-content:space-between;gap:28px;
+    }
+    .brand{
+      font-family:"Unbounded",sans-serif;font-size:25px;font-weight:700;letter-spacing:-.05em;
+      border:1px solid rgba(31,31,31,.32);border-radius:14px;padding:9px 14px;background:rgba(255,255,255,.28);
+    }
+    .nav-links{display:flex;align-items:center;gap:34px;font-size:14px;font-weight:600}
+    .nav-links>a:not(.btn){position:relative;padding:10px 0}
+    .nav-links>a:not(.btn)::after{
+      content:"";position:absolute;left:0;right:100%;bottom:3px;height:1px;background:var(--ink);
+      transition:right .28s ease;
+    }
+    .nav-links>a:not(.btn):hover::after{right:0}
+    .topbar .btn{
+      background:#43451C;color:#fff;border-radius:9px;padding:15px 25px;
+      box-shadow:0 10px 26px rgba(67,69,28,.12);
+    }
+
+    .hero{
+      position:relative;min-height:100svh;height:100svh;padding:0;overflow:hidden;
+      background:#e4e0d9;display:block;
+    }
+    .hero-full{
+      position:absolute;inset:0;--pos:55%;overflow:hidden;background:#dad7d1;
+    }
+    .hero-photo{
+      position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;
+      user-select:none;pointer-events:none;
+    }
+    .hero-before{z-index:1}
+    .hero-after{
+      z-index:2;
+      clip-path:inset(0 0 0 var(--pos));
+    }
+    .hero-full::before{
+      content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
+      background:
+        linear-gradient(90deg,
+          rgba(244,241,236,.99) 0%,
+          rgba(244,241,236,.97) 17%,
+          rgba(244,241,236,.78) 30%,
+          rgba(244,241,236,.28) 43%,
+          rgba(244,241,236,0) 53%);
+    }
+    .hero-full::after{
+      content:"";position:absolute;left:0;right:0;bottom:0;height:18%;z-index:3;pointer-events:none;
+      background:linear-gradient(0deg,rgba(243,239,232,.33),rgba(243,239,232,0));
+    }
+    .hero-content{
+      position:relative;z-index:8;height:100%;
+      width:min(1480px,calc(100% - 64px));margin:0 auto;
+      display:flex;align-items:center;padding-top:78px;
+      pointer-events:none;
+    }
+    .hero-copy{width:min(620px,44vw);pointer-events:auto}
+    .hero-copy h1{
+      font-family:"Manrope",sans-serif;font-size:clamp(46px,4.1vw,68px);
+      font-weight:800;line-height:.98;letter-spacing:-.055em;max-width:650px;
+    }
+    .hero-sub{
+      margin-top:28px;max-width:510px;font-size:19px;line-height:1.5;color:#595751;
+    }
+    .hero-actions{margin-top:30px}
+    @property --hero-border-angle { syntax:"<angle>"; inherits:false; initial-value:0deg; }
+    @keyframes heroBorderSpin { to { --hero-border-angle:360deg; } }
+    .hero .btn{
+      position:relative;overflow:hidden;border-radius:10px;padding:17px 28px;background:#43451C;
+      box-shadow:0 13px 30px rgba(67,69,28,.15);
+      transition:background .25s ease,box-shadow .25s ease;
+      isolation:isolate;
+    }
+    .hero .btn::before{
+      content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;
+      background:conic-gradient(from var(--hero-border-angle),
+        rgba(255,255,255,.10) 0deg,
+        rgba(255,255,255,.12) 240deg,
+        rgba(255,255,255,.80) 300deg,
+        rgba(255,255,255,.16) 332deg,
+        rgba(255,255,255,.10) 360deg);
+      -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+      -webkit-mask-composite:xor;mask-composite:exclude;
+      animation:heroBorderSpin 4.2s linear infinite;
+      pointer-events:none;z-index:0;
+    }
+    .hero .btn span{position:relative;z-index:1}
+    .hero .btn:hover{background:#4a4d21;box-shadow:0 15px 34px rgba(67,69,28,.20)}
+    .hero-location{
+      margin-top:28px;display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;
+      color:#34332f;
+    }
+    .hero-location svg{width:21px;height:21px;flex:0 0 auto}
+
+    .hero-divider{
+      position:absolute;z-index:6;top:0;bottom:0;left:var(--pos);width:2px;
+      transform:translateX(-1px);background:rgba(255,255,255,.98);
+      box-shadow:0 0 14px rgba(255,226,178,.9),0 0 2px rgba(255,255,255,.95);
+      pointer-events:none;
+    }
+    .hero-handle{
+      position:absolute;z-index:7;left:var(--pos);top:55%;transform:translate(-50%,-50%);
+      width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.97);
+      display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.18);
+      font-size:22px;font-weight:800;pointer-events:none;
+      transition:transform .2s ease;
+    }
+    .hero-full:hover .hero-handle{transform:translate(-50%,-50%) scale(1.06)}
+    .hero-range{
+      position:absolute;z-index:9;inset:0;width:100%;height:100%;margin:0;
+      appearance:none;background:transparent;cursor:ew-resize;opacity:0;
+    }
+    .hero-range::-webkit-slider-thumb{appearance:none;width:58px;height:100vh}
+    .hero-range::-moz-range-thumb{width:58px;height:100vh;border:0;background:transparent}
+    .hero-hint{
+      position:absolute;z-index:8;left:calc(var(--pos) + 42px);top:calc(55% + 42px);
+      font-size:11px;font-weight:700;color:rgba(31,31,31,.54);opacity:0;transition:opacity .2s ease;
+      pointer-events:none;
+    }
+    .hero-full:hover .hero-hint{opacity:1}
+
+    @media(max-width:980px){
+      .nav{width:min(100% - 32px,1480px);height:72px}
+      .brand{font-size:19px;padding:7px 10px}
+      .nav-links>a:not(.btn){display:none}
+      .topbar .btn{padding:12px 16px;font-size:13px}
+      .hero-content{width:calc(100% - 32px);padding-top:66px;align-items:flex-end;padding-bottom:52px}
+      .hero-copy{width:100%;max-width:590px}
+      .hero-copy h1{font-size:clamp(39px,8vw,60px);max-width:590px}
+      .hero-sub{font-size:16px;max-width:460px;margin-top:20px}
+      .hero-full{--pos:67%}
+      .hero-full::before{
+        background:
+          linear-gradient(90deg,rgba(244,241,236,.97) 0%,rgba(244,241,236,.91) 24%,rgba(244,241,236,.52) 50%,rgba(244,241,236,0) 67%),
+          linear-gradient(0deg,rgba(244,241,236,.88) 0%,rgba(244,241,236,.20) 58%,rgba(244,241,236,0) 75%);
+      }
+      .hero-handle{top:47%}
+      .hero-location{margin-top:20px}
+    }
+    @media(max-width:620px){
+      .hero{height:100svh;min-height:760px}
+      .topbar .btn{font-size:0;width:46px;height:42px;padding:0}
+      .topbar .btn::after{content:"↗";font-size:18px}
+      .hero-content{padding-bottom:34px}
+      .hero-copy h1{font-size:42px;line-height:1.02}
+      .hero-sub{font-size:15px;max-width:360px}
+      .hero-actions{margin-top:22px}
+      .hero .btn{font-size:14px;padding:15px 20px}
+      .hero-location{font-size:13px}
+      .hero-full{--pos:73%}
+      .hero-photo{object-position:center}
+      .hero-full::before{
+        background:
+          linear-gradient(90deg,rgba(244,241,236,.99) 0%,rgba(244,241,236,.97) 28%,rgba(244,241,236,.72) 48%,rgba(244,241,236,.10) 73%),
+          linear-gradient(0deg,rgba(244,241,236,.96) 0%,rgba(244,241,236,.56) 45%,rgba(244,241,236,0) 70%);
+      }
+      .hero-handle{width:50px;height:50px;top:42%}
+    }
+
+  
+
+    /* ===== FINAL RESPONSIVE PASS: phone + tablet ===== */
+    :root{--tap:48px}
+    .btn,.chip,summary,.ba-range,.hero-range{touch-action:manipulation}
+    .btn{min-height:var(--tap)}
+    input,select,button{font-size:16px}
+
+    @media (hover:none){
+      .btn:hover,.week:hover,.service-card:hover{transform:none;box-shadow:inherit}
+      .service-card:hover .service-photo img{transform:none}
+      .hero .btn:hover{background:#43451C;box-shadow:0 13px 30px rgba(67,69,28,.15)}
+      .hero-full:hover .hero-handle{transform:translate(-50%,-50%)}
+      .hero-full:hover .hero-hint{opacity:0}
+    }
+
+    /* landscape + portrait tablets */
+    @media (min-width:761px) and (max-width:1180px){
+      .container{width:min(100% - 48px,1180px)}
+      .section{padding:76px 0}
+      h2,.cases-heading,.estimate-heading,.services-heading,.prices-heading,.final-cta h2{font-size:42px;line-height:1.04}
+      .nav{width:calc(100% - 40px);height:78px;gap:16px}
+      .brand{font-size:21px;padding:8px 12px}
+      .nav-links{gap:18px;font-size:12px}
+      .topbar .btn{padding:12px 16px;font-size:12px;white-space:nowrap}
+
+      .hero{height:100svh;min-height:720px}
+      .hero-content{width:calc(100% - 48px);padding-top:64px;align-items:center}
+      .hero-copy{width:min(540px,50vw)}
+      .hero-copy h1{font-size:clamp(44px,5.3vw,58px);line-height:.99;max-width:560px}
+      .hero-sub{font-size:17px;max-width:470px;margin-top:22px}
+      .hero-actions{margin-top:24px}
+      .hero-location{margin-top:22px}
+      .hero-full{--pos:60%}
+      .hero-full::before{background:linear-gradient(90deg,rgba(244,241,236,.98) 0%,rgba(244,241,236,.94) 20%,rgba(244,241,236,.70) 38%,rgba(244,241,236,.16) 56%,rgba(244,241,236,0) 66%)}
+      .hero-handle{width:56px;height:56px;top:54%}
+      .hero-range::-webkit-slider-thumb{width:72px;height:100vh}
+      .hero-range::-moz-range-thumb{width:72px;height:100vh}
+
+      .timeline-grid{grid-template-columns:repeat(2,1fr)}
+      .cases-grid{grid-template-columns:repeat(2,1fr);gap:18px}
+      .services-grid,.prices-grid{grid-template-columns:repeat(3,1fr);gap:14px}
+      .service-photo{height:210px}
+      .service-content{padding:19px 18px 22px}
+      .service-content h3{font-size:22px}
+      .service-content p{font-size:14px;line-height:1.45}
+      .team-grid{grid-template-columns:repeat(2,1fr)}
+      .reviews-grid{grid-template-columns:repeat(2,1fr)}
+      .plan-grid{grid-template-columns:1fr;gap:16px}
+      .plan-image{min-height:340px}
+      .final-cta{grid-template-columns:1fr 1fr;padding:30px}
+    }
+
+    /* phones */
+    @media (max-width:760px){
+      body{line-height:1.42}
+      .container{width:calc(100% - 28px)}
+      .section{padding:56px 0}
+      .eyebrow{font-size:11px;margin-bottom:12px}
+      h1,h2,.final-cta h2,.cases-heading,.estimate-heading,.services-heading,.prices-heading{font-size:34px;line-height:1.04;letter-spacing:-.04em}
+      h3{font-size:23px;line-height:1.08}
+      .two-line{max-width:100%}
+
+      .topbar{position:absolute;background:linear-gradient(180deg,rgba(247,244,239,.97),rgba(247,244,239,.70) 76%,transparent)}
+      .nav{width:calc(100% - 28px);height:70px;gap:10px}
+      .brand{font-size:18px;border-radius:11px;padding:7px 9px}
+      .nav-links{gap:0}
+      .nav-links>a:not(.btn){display:none}
+      .topbar .btn{font-size:13px!important;width:auto!important;height:auto!important;min-height:42px;padding:10px 13px!important;border-radius:9px;white-space:nowrap}
+      .topbar .btn::after{content:none!important}
+
+      .hero{height:auto;min-height:760px;display:block}
+      .hero-full{--pos:69%}
+      .hero-photo{object-position:center center}
+      .hero-full::before{
+        background:
+          linear-gradient(90deg,rgba(244,241,236,.99) 0%,rgba(244,241,236,.97) 30%,rgba(244,241,236,.79) 48%,rgba(244,241,236,.22) 68%,rgba(244,241,236,0) 78%),
+          linear-gradient(0deg,rgba(244,241,236,.98) 0%,rgba(244,241,236,.86) 35%,rgba(244,241,236,.18) 64%,rgba(244,241,236,0) 80%);
+      }
+      .hero-content{width:calc(100% - 28px);height:760px;min-height:760px;padding:92px 0 34px;align-items:flex-end}
+      .hero-copy{width:100%;max-width:520px}
+      .hero-copy h1{font-size:clamp(36px,10.3vw,44px);line-height:1.01;letter-spacing:-.055em;max-width:520px}
+      .hero-sub{font-size:15px;line-height:1.45;max-width:390px;margin-top:18px}
+      .hero-sub br{display:none}
+      .hero-actions{margin-top:20px}
+      .hero .btn{min-height:50px;padding:14px 18px;font-size:14px;border-radius:9px}
+      .hero-location{margin-top:17px;font-size:13px;gap:8px}
+      .hero-location svg{width:18px;height:18px}
+      .hero-divider{width:1.5px}
+      .hero-handle{width:52px;height:52px;top:43%;font-size:19px}
+      .hero-range::-webkit-slider-thumb{width:78px;height:100vh}
+      .hero-range::-moz-range-thumb{width:78px;height:100vh}
+      .hero-hint{display:none}
+
+      .split-box,.timeline-grid,.cases-grid,.services-grid,.prices-grid,.plan-grid,.reviews-grid,.calc-grid,.footer-grid{grid-template-columns:1fr}
+      .team-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+      .timeline-grid,.cases-grid,.services-grid,.prices-grid,.reviews-grid{gap:14px}
+      .week{min-height:0;padding:22px 20px}
+      .week .small{margin-bottom:14px}
+      .week h3{font-size:24px;margin-bottom:8px}
+      .week p{font-size:15px}
+
+      .ba{aspect-ratio:1/1.05}
+      .ba-handle{width:54px;height:54px}
+      .ba-range::-webkit-slider-thumb{width:72px;height:72px}
+      .ba-range::-moz-range-thumb{width:72px;height:72px}
+      .ba-label{top:12px;padding:8px 11px;font-size:11px}
+      .ba-label.left{left:12px}.ba-label.right{right:12px}
+      .case-copy{padding:16px 16px 18px}
+      .case-title{font-size:21px}
+      .case-meta{font-size:12px;gap:7px 12px}
+
+      .estimate{grid-template-columns:1fr;gap:14px;margin-top:24px}
+      .estimate-copy,.estimate-table,.calc-box,.final-cta{padding:20px;border-radius:22px}
+      .row{padding:13px 0;font-size:14px}
+      .row:last-child{font-size:18px}
+      .calc-grid{gap:12px}
+      .field input,.field select{min-height:50px;font-size:16px}
+      .calc-result{align-items:stretch}
+      .calc-result .btn{width:100%}
+
+      .service-card{border-radius:22px}
+      .service-photo{height:auto;aspect-ratio:4/3}
+      .service-content{padding:18px 18px 21px}
+      .service-content p{font-size:15px;line-height:1.48}
+
+      .price-card{padding:20px}
+      .price-tag{font-size:27px;margin:14px 0 10px}
+
+      .plan-intro{font-size:15px;margin-top:12px}
+      .plan-media{min-height:0;border-radius:22px;padding:0}
+      .plan-image{min-height:0;aspect-ratio:1/1}
+      .plan-image img{padding:10px}
+      .plan-tabs{padding:12px;gap:8px;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
+      .chip{flex:0 0 auto;min-height:44px;padding:10px 13px;font-size:13px}
+      .plan-copy{padding:20px!important;min-height:180px}
+
+      .person{border-radius:20px}
+      .person-copy{padding:12px 12px 14px;min-height:72px}
+      .person-copy strong{font-size:14px;line-height:1.2}
+      .person-copy small{font-size:12px;margin-top:5px}
+
+      details{padding:16px 17px;border-radius:16px}
+      summary{font-size:15px;line-height:1.35}
+      details p{font-size:14px}
+
+      .final-cta{grid-template-columns:1fr;gap:20px}
+      .lead-form input{min-height:50px;font-size:16px}
+      .lead-form .btn{width:100%}
+      footer{margin-top:56px;padding:36px 0 22px}
+      .footer-grid{gap:22px}
+    }
+
+    @media (max-width:430px){
+      .container,.nav,.hero-content{width:calc(100% - 24px)}
+      .brand{font-size:16px}
+      .topbar .btn{font-size:12px!important;padding:9px 11px!important}
+      .hero{min-height:730px}
+      .hero-content{height:730px;min-height:730px;padding-bottom:28px}
+      .hero-copy h1{font-size:37px}
+      .hero-full{--pos:72%}
+      h1,h2,.final-cta h2,.cases-heading,.estimate-heading,.services-heading,.prices-heading{font-size:31px}
+      .team-grid{grid-template-columns:1fr 1fr}
+    }
+
+    @media (max-width:370px){
+      .topbar .btn{font-size:11px!important;padding:9px 10px!important}
+      .brand{font-size:15px;padding:6px 8px}
+      .hero-copy h1{font-size:34px}
+      h1,h2,.final-cta h2,.cases-heading,.estimate-heading,.services-heading,.prices-heading{font-size:29px}
+      .team-grid{grid-template-columns:1fr}
+    }
+
+    @media (orientation:landscape) and (max-height:620px) and (max-width:1000px){
+      .hero{height:auto;min-height:620px}
+      .hero-content{height:620px;min-height:620px;padding-top:72px;padding-bottom:22px;align-items:flex-end}
+      .hero-copy h1{font-size:38px;max-width:520px}
+      .hero-sub{font-size:14px;margin-top:12px}
+      .hero-actions{margin-top:14px}
+      .hero-location{margin-top:12px}
+      .hero-handle{top:50%}
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+    }
+
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="nav">
+    <a href="#top" class="brand">2MONTHS</a>
+    <nav class="nav-links">
+      <a href="#timeline">Как мы работаем</a>
+      <a href="#cases">Проекты</a>
+      <a href="#prices">Цены</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#team">О компании</a>
+      <a href="#lead">Контакты</a>
+      <a href="#calculator" class="btn"><span>Рассчитать стоимость ремонта</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-label="Ремонт квартир под ключ в Минске">
+    <div class="hero-full" data-hero-beforeafter>
+      <img class="hero-photo hero-before" src="assets/img_01_777f51e4f404.webp" alt="Квартира до ремонта, бетонная отделка" loading="eager" fetchpriority="high" decoding="async">
+      <img class="hero-photo hero-after" src="assets/img_02_3c52b3d0e870.webp" alt="Эта же квартира после ремонта" loading="eager" fetchpriority="high" decoding="async">
+      <div class="hero-divider"></div>
+      <div class="hero-handle">‹ ›</div>
+      <div class="hero-hint">Потяните</div>
+      <input class="hero-range" type="range" min="18" max="88" value="55" aria-label="Сравнить квартиру до и после ремонта">
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-copy">
+        <h1>Въехать через 2 месяца.<br>А не жить год среди<br>мешков и обещаний.</h1>
+        <p class="hero-sub">От бетонной коробки до готового интерьера<br>по понятному плану, смете и срокам.</p>
+        <div class="hero-actions">
+          <a href="#calculator" class="btn">Рассчитать стоимость ремонта</a>
+        </div>
+        <div class="hero-location">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.1 7-12A7 7 0 1 0 5 9c0 6.9 7 12 7 12Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9" r="2.3" stroke="currentColor" stroke-width="1.8"/></svg>
+          <span>Минск и Минская область</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow reveal">Не про ремонт. Про вашу жизнь.</div>
+      <h2 class="reveal two-line">Ремонт не должен превращаться<br>во вторую работу.</h2>
+
+      <div class="split-box">
+        <article class="tile reveal">
+          <h3>Как бывает</h3>
+          <div class="scenario-list">
+            <div>18:40 - звонит электрик.</div>
+            <div>19:15 - надо срочно ехать выбирать плитку.</div>
+            <div>20:30 - прораб спрашивает, где купить смеситель.</div>
+            <div>22:10 - выясняется, что не хватает материалов.</div>
+          </div>
+        </article>
+
+        <article class="tile dark reveal">
+          <h3>Как в 2MONTHS</h3>
+          <div class="scenario-list">
+            <div>Один менеджер проекта.</div>
+            <div>Одна понятная смета.</div>
+            <div>Один чат по ремонту.</div>
+            <div>Один график, где видно, что уже сделано и что будет дальше.</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="timeline">
+    <div class="container">
+      <div class="eyebrow reveal">8 недель вместо бесконечного ремонта</div>
+      <h2 class="reveal two-line">От ключей от бетонной коробки<br>до ключей от готового дома.</h2>
+
+      <div class="timeline-grid">
+        <article class="week reveal"><div class="small">Неделя 01</div><h3>Старт</h3><p>Замеры, финальная смета, график и закупка первой партии материалов.</p></article>
+        <article class="week reveal"><div class="small">Неделя 02</div><h3>Инженерия</h3><p>Электрика, сантехника, подготовка стен и потолков.</p></article>
+        <article class="week reveal"><div class="small">Неделя 03</div><h3>Черновая база</h3><p>Стяжка, выравнивание, перегородки и все скрытые работы.</p></article>
+        <article class="week reveal"><div class="small">Неделя 04</div><h3>Форма</h3><p>Плитка, подготовка пола, первые чистовые поверхности.</p></article>
+        <article class="week reveal"><div class="small">Неделя 05</div><h3>Цвет и фактуры</h3><p>Покраска, декоративные покрытия, чистовая отделка.</p></article>
+        <article class="week reveal"><div class="small">Неделя 06</div><h3>Сборка</h3><p>Двери, свет, сантехника, встроенные решения.</p></article>
+        <article class="week reveal"><div class="small">Неделя 07</div><h3>Комплектация</h3><p>Мебель, техника, текстиль и финальные детали.</p></article>
+        <article class="week reveal"><div class="small">Неделя 08</div><h3>Ключи</h3><p>Проверка, клининг, приемка и готовая квартира.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="cases">
+    <div class="container">
+      <div class="eyebrow reveal">Кейсы</div>
+      <h2 class="reveal two-line cases-heading">Не просто красивые картинки.<br>Площадь, срок и реальный бюджет.</h2>
+
+      <div class="cases-grid">
+        <article class="case-card reveal">
+          <div class="ba" data-beforeafter>
+            <div class="ba-before"><img loading="lazy" decoding="async" src="assets/img_03_7e786d47bdbc.webp" alt="Новая Боровая до ремонта, бетонная коробка"></div>
+            <div class="ba-after"><img loading="lazy" decoding="async" src="assets/img_04_2b3cbbf7eea3.webp" alt="Новая Боровая после ремонта, готовый интерьер"></div>
+            <span class="ba-label left">Готово</span><span class="ba-label right">Бетон</span><div class="ba-divider"></div><div class="ba-handle">↔</div>
+            <input class="ba-range" type="range" min="0" max="100" value="48" aria-label="Кейс Новая Боровая, до и после ремонта">
+          </div>
+          <div class="case-copy">
+            <div class="case-title">Новая Боровая</div>
+            <div class="case-meta"><span>83 м²</span><span>8 недель</span><span>87 000 BYN</span><span>Семья с ребенком</span></div>
+          </div>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="ba" data-beforeafter>
+            <div class="ba-before"><img loading="lazy" decoding="async" src="assets/img_05_41e9d95cdcb1.webp" alt="Минск Мир до ремонта, бетонная коробка"></div>
+            <div class="ba-after"><img loading="lazy" decoding="async" src="assets/img_06_929a3ea431a5.webp" alt="Минск Мир после ремонта, готовая спальня"></div>
+            <span class="ba-label left">Готово</span><span class="ba-label right">Бетон</span><div class="ba-divider"></div><div class="ba-handle">↔</div>
+            <input class="ba-range" type="range" min="0" max="100" value="52" aria-label="Кейс Минск Мир, до и после ремонта">
+          </div>
+          <div class="case-copy">
+            <div class="case-title">Минск Мир</div>
+            <div class="case-meta"><span>61 м²</span><span>7 недель</span><span>66 000 BYN</span><span>Пара без детей</span></div>
+          </div>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="ba" data-beforeafter>
+            <div class="ba-before"><img loading="lazy" decoding="async" src="assets/img_07_7217372e2d1f.webp" alt="Левада до ремонта, бетонная коробка и черновая прихожая"></div>
+            <div class="ba-after"><img loading="lazy" decoding="async" src="assets/img_08_9d3995819db5.webp" alt="Левада после ремонта, готовая современная прихожая"></div>
+            <span class="ba-label left">Готово</span><span class="ba-label right">Бетон</span><div class="ba-divider"></div><div class="ba-handle">↔</div>
+            <input class="ba-range" type="range" min="0" max="100" value="46" aria-label="Кейс Левада, до и после ремонта">
+          </div>
+          <div class="case-copy">
+            <div class="case-title">Левада</div>
+            <div class="case-meta"><span>74 м²</span><span>8 недель</span><span>79 000 BYN</span><span>Семья с двумя детьми</span></div>
+          </div>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="ba" data-beforeafter>
+            <div class="ba-before"><img loading="lazy" decoding="async" src="assets/img_09_05a8a5f41ac9.webp" alt="Петровщина до ремонта, бетонная коробка кухни-столовой"></div>
+            <div class="ba-after"><img loading="lazy" decoding="async" src="assets/img_10_0a2ca301b8eb.webp" alt="Петровщина после ремонта, готовая светлая кухня-столовая"></div>
+            <span class="ba-label left">Готово</span><span class="ba-label right">Бетон</span><div class="ba-divider"></div><div class="ba-handle">↔</div>
+            <input class="ba-range" type="range" min="0" max="100" value="54" aria-label="Кейс Петровщина, до и после ремонта">
+          </div>
+          <div class="case-copy">
+            <div class="case-title">Петровщина</div>
+            <div class="case-meta"><span>49 м²</span><span>6 недель</span><span>54 000 BYN</span><span>Квартира под аренду</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow reveal">Смета</div>
+      <h2 class="reveal two-line estimate-heading">Вы знаете, куда уходят деньги,<br>до того как они ушли.</h2>
+
+      <div class="estimate">
+        <div class="estimate-copy reveal">
+          <h3>Без сюрпризов по пути</h3>
+          <p style="margin-top:14px;color:var(--muted);font-size:18px;">Сначала согласуем бюджет и состав работ. Потом ремонтируем. Если появляется изменение, вы видите его до оплаты, а не после.</p>
+        </div>
+
+        <div class="estimate-table reveal">
+          <div class="row"><span>Черновые работы</span><strong>12 400 BYN</strong></div>
+          <div class="row"><span>Электрика и сантехника</span><strong>9 600 BYN</strong></div>
+          <div class="row"><span>Чистовая отделка</span><strong>18 900 BYN</strong></div>
+          <div class="row"><span>Материалы</span><strong>27 800 BYN</strong></div>
+          <div class="row"><span>Комплектация</span><strong>13 300 BYN</strong></div>
+          <div class="row"><span>Итого</span><strong>82 000 BYN</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="calculator">
+    <div class="container">
+      <div class="eyebrow reveal">Калькулятор</div>
+      <h2 class="reveal two-line">Сколько может стоить<br>ваш ремонт?</h2>
+
+      <div class="calc-box reveal">
+        <div class="calc-grid">
+          <div class="field">
+            <label for="area">Площадь квартиры, м²</label>
+            <input id="area" type="number" min="20" max="250" value="65">
+          </div>
+          <div class="field">
+            <label for="state">Состояние квартиры</label>
+            <select id="state">
+              <option value="1">Новостройка без отделки</option>
+              <option value="1.15">Вторичка, нужен демонтаж</option>
+              <option value="0.9">Есть базовая отделка</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="level">Уровень ремонта</label>
+            <select id="level">
+              <option value="850">BASE</option>
+              <option value="1050" selected>COMFORT</option>
+              <option value="1350">INDIVIDUAL</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="design">Нужен дизайн-проект?</label>
+            <select id="design">
+              <option value="0">Нет</option>
+              <option value="4500">Да</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="calc-result">
+          <div>
+            <div style="color:#BDBAB4;font-size:13px;font-weight:700;margin-bottom:8px;">Предварительный ориентир</div>
+            <div class="calc-price" id="resultPrice">68 000 - 79 000 BYN</div>
+            <div id="resultTime" style="margin-top:8px;color:#BDBAB4;">Ориентировочный срок: 7-8 недель</div>
+          </div>
+          <a href="#lead" class="btn light">Получить точный расчет</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow reveal">Услуги</div>
+      <h2 class="reveal two-line services-heading">Можно отдать нам весь ремонт.<br>Или только ту часть, которая<br>забирает больше всего времени.</h2>
+
+      <div class="services-grid">
+        <article class="card service-card reveal">
+          <div class="service-photo"><img loading="lazy" decoding="async" src="assets/img_11_a206f29ec434.webp" alt="Рабочие выполняют ремонт квартиры под ключ"></div>
+          <div class="service-content"><h3>Ремонт под ключ</h3><p>Полный цикл от замеров и сметы до клининга и приемки.</p></div>
+        </article>
+        <article class="card service-card reveal">
+          <div class="service-photo"><img loading="lazy" decoding="async" src="assets/img_12_af387356b953.webp" alt="Дизайн-проект квартиры на фоне бетонного объекта"></div>
+          <div class="service-content"><h3>Дизайн-проект</h3><p>Планировка, материалы, свет, мебель и рабочие чертежи.</p></div>
+        </article>
+        <article class="card service-card reveal">
+          <div class="service-photo"><img loading="lazy" decoding="async" src="assets/img_13_d4704a280288.webp" alt="Приемка мебели и сантехники на объекте по смете"></div>
+          <div class="service-content"><h3>Комплектация</h3><p>Закупка, доставка, проверка материалов и контроль поставок.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="prices">
+    <div class="container">
+      <div class="eyebrow reveal">Цены</div>
+      <h2 class="reveal two-line prices-heading">Три понятных уровня ремонта.<br>Без прайса на 47 непонятных<br>позиций.</h2>
+
+      <div class="prices-grid">
+        <article class="card price-card reveal"><h3>BASE</h3><div class="price-tag">от 850 BYN/м²</div><p>Для аккуратного современного ремонта без сложных индивидуальных решений.</p></article>
+        <article class="card price-card featured reveal"><h3>COMFORT</h3><div class="price-tag">от 1050 BYN/м²</div><p>Оптимальный вариант для большинства квартир. Продуманная отделка, свет и комплектация.</p></article>
+        <article class="card price-card reveal"><h3>INDIVIDUAL</h3><div class="price-tag">от 1350 BYN/м²</div><p>Для нестандартных решений, сложных деталей и авторских материалов.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow reveal">Планировка</div>
+      <h2 class="reveal two-line">Сначала решаем, как вы будете жить.<br>Потом строим стены.</h2>
+      <p class="plan-intro reveal">Ниже одна и та же квартира: исходная планировка, наше решение в том же внешнем контуре и интерьер, реализованный по этой логике.</p>
+
+      <div class="plan-grid">
+        <div class="plan-media reveal">
+          <div class="plan-image"><img loading="lazy" decoding="async" id="planImage" src="assets/img_14_73775c74e342.webp" alt="Исходная планировка этой же квартиры"></div>
+          <div class="plan-tabs">
+            <button class="chip active" data-plan="before">До</button>
+            <button class="chip" data-plan="solution">Решение 2MONTHS</button>
+            <button class="chip" data-plan="ready">Готово</button>
+          </div>
+        </div>
+
+        <div class="card plan-copy reveal">
+          <h3 id="planTitle">Исходная планировка</h3>
+          <p id="planText" style="margin-top:14px;color:var(--muted);font-size:18px;">Длинный коридор, мало хранения и кухня, отделенная от жизни квартиры.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div id="team" class="eyebrow reveal">Команда</div>
+      <h2 class="reveal two-line">Вы не управляете шестью подрядчиками.<br>За ремонт отвечает одна команда.</h2>
+
+      <div class="team-grid">
+        <article class="card person reveal"><img loading="lazy" decoding="async" src="assets/img_15_95da177a28d0.webp" alt="Александр Морозов"><div class="person-copy"><strong>Александр Морозов</strong><small>Генеральный директор</small></div></article>
+        <article class="card person reveal"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80" alt="Мария"><div class="person-copy"><strong>Мария</strong><small>Дизайнер интерьера</small></div></article>
+        <article class="card person reveal"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80" alt="Илья"><div class="person-copy"><strong>Илья</strong><small>Прораб</small></div></article>
+        <article class="card person reveal"><img loading="lazy" decoding="async" src="assets/img_16_c4aebcff9d31.webp" alt="Виктория Лебедева"><div class="person-copy"><strong>Виктория Лебедева</strong><small>Менеджер проекта</small></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div id="reviews" class="eyebrow reveal">Отзывы</div>
+      <h2 class="reveal two-line">Что говорят клиенты<br>после сдачи квартиры.</h2>
+
+      <div class="reviews-grid">
+        <article class="card reveal"><h3>83 м², Новая Боровая</h3><p style="margin-top:12px;color:var(--muted);">"Боялись, что ремонт растянется. В итоге въехали через восемь недель, как и было в графике."</p></article>
+        <article class="card reveal"><h3>61 м², Минск Мир</h3><p style="margin-top:12px;color:var(--muted);">"Смета была понятной с самого начала. Не было ощущения, что каждую неделю появляется новая доплата."</p></article>
+        <article class="card reveal"><h3>74 м², Левада</h3><p style="margin-top:12px;color:var(--muted);">"Мы оба работаем и не хотели становиться менеджерами собственного ремонта. Здесь это действительно не понадобилось."</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="eyebrow reveal">FAQ</div>
+      <h2 class="reveal two-line">Что обычно спрашивают<br>до старта.</h2>
+
+      <div class="faq-list">
+        <details class="reveal"><summary>Реально ли закончить ремонт за 2 месяца?</summary><p>Да, если объем работ и поставки материалов позволяют работать по утвержденному графику. Срок фиксируем после замеров и согласования проекта.</p></details>
+        <details class="reveal"><summary>Может ли измениться смета?</summary><p>Изменения возможны только при изменении состава работ или выбранных материалов. До выполнения дополнительных работ согласовываем стоимость с вами.</p></details>
+        <details class="reveal"><summary>Мне нужно самому покупать материалы?</summary><p>Нет. Комплектацию и поставки можно полностью передать нашей команде.</p></details>
+        <details class="reveal"><summary>Можно начать без дизайн-проекта?</summary><p>Можно. Для части квартир достаточно планировочного решения, технического задания и заранее согласованной отделки.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="lead">
+    <div class="container">
+      <div class="final-cta reveal">
+        <div>
+          <div class="eyebrow" style="color:#fff;opacity:.82;">Точный расчет</div>
+          <h2>Узнайте, во сколько обойдется ремонт до начала работ.</h2>
+        </div>
+
+        <form class="lead-form" id="leadForm">
+          <input name="name" placeholder="Имя" required>
+          <input name="contact" placeholder="Телефон или Telegram" required>
+          <button class="btn light block" type="submit">Получить расчет</button>
+          <div class="message" id="formMessage">Заявка отправлена. Мы свяжемся с вами для уточнения деталей.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="brand">2MONTHS</div>
+        <div class="muted">Ремонт квартир под ключ в Минске</div>
+      </div>
+      <div class="footer-col">
+        <strong>Контакты</strong>
+        <a href="tel:+375291234567">+375 29 123-45-67</a>
+        <a href="mailto:hello@2months.by">hello@2months.by</a>
+        <span>Минск, Беларусь</span>
+      </div>
+      <div class="footer-col">
+        <strong>Связаться</strong>
+        <a href="#" onclick="alert('Откроется Telegram');return false;">Telegram</a>
+        <a href="#" onclick="alert('Откроется Instagram');return false;">Instagram</a>
+        <a href="#" onclick="alert('Политика конфиденциальности');return false;">Политика конфиденциальности</a>
+      </div>
+    </div>
+    <div class="copyright">© 2026 2MONTHS. Все права защищены.</div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+  document.querySelectorAll('[data-hero-beforeafter]').forEach(box=>{
+    const range = box.querySelector('.hero-range');
+    const updateHero = () => box.style.setProperty('--pos', range.value + '%');
+    range.addEventListener('input', updateHero);
+    range.addEventListener('change', updateHero);
+    updateHero();
+  });
+
+  document.querySelectorAll('[data-beforeafter]').forEach(box=>{
+    const range = box.querySelector('.ba-range');
+    const update = () => box.style.setProperty('--pos', range.value + '%');
+    range.addEventListener('input', update);
+    range.addEventListener('change', update);
+    update();
+  });
+
+  const area = document.getElementById('area');
+  const state = document.getElementById('state');
+  const level = document.getElementById('level');
+  const design = document.getElementById('design');
+  const resultPrice = document.getElementById('resultPrice');
+  const resultTime = document.getElementById('resultTime');
+
+  function roundHundreds(v){ return Math.round(v / 100) * 100; }
+  function calc(){
+    const a = Math.max(20, Number(area.value || 20));
+    const s = Number(state.value);
+    const l = Number(level.value);
+    const d = Number(design.value);
+    const base = a * l * s + d;
+    const min = roundHundreds(base * 0.96);
+    const max = roundHundreds(base * 1.12);
+    resultPrice.textContent = min.toLocaleString('ru-RU') + ' - ' + max.toLocaleString('ru-RU') + ' BYN';
+    resultTime.textContent = 'Ориентировочный срок: ' + (a > 95 ? '9-10 недель' : '7-8 недель');
+  }
+  [area,state,level,design].forEach(el=>el.addEventListener('input', calc));
+  calc();
+
+  const planData = {
+    before: {
+      img: 'assets/img_14_73775c74e342.webp',
+      title: 'До',
+      text: 'Квартира в бетоне без внутренних стен: только внешний контур, окна и базовые инженерные точки. На этом этапе пространство ещё не разделено на комнаты и не работает на сценарии жизни.'
+    },
+    solution: {
+      img: 'assets/img_17_2b0ecce8b414.webp',
+      title: 'Решение 2MONTHS',
+      text: 'На этапе планировки мы добавляем нужные стены и зонирование: выделяем спальню, санузел и гардероб, а кухню-гостиную делаем единым светлым пространством. Всё логично, без лишних помещений и с понятными проходами.'
+    },
+    ready: {
+      img: 'assets/img_18_c6d929c6703f.webp',
+      title: 'Готовое пространство',
+      text: 'Финальный результат этой же квартиры: светлая кухня-гостиная с обеденной зоной, встроенным хранением и продуманной композицией. То, что было пустым контуром, становится удобным пространством для жизни.'
+    }
+  };
+  const planImage = document.getElementById('planImage');
+  const planTitle = document.getElementById('planTitle');
+  const planText = document.getElementById('planText');
+  document.querySelectorAll('.chip').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.chip').forEach(ch=>ch.classList.remove('active'));
+      btn.classList.add('active');
+      const data = planData[btn.dataset.plan];
+      planImage.src = data.img;
+      planTitle.textContent = data.title;
+      planText.textContent = data.text;
+    });
+  });
+
+  document.getElementById('leadForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = e.currentTarget;
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+    document.getElementById('formMessage').style.display = 'block';
+    form.querySelector('button').textContent = 'Отправлено';
+  });
+</script>
+
+</body>
+</html>
